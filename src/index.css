@@ -1,0 +1,86 @@
+:root {
+    --bg-color: white;
+    --color: black;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--color);
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+@media (prefers-color-scheme: dark){
+    body{
+        --bg-color: black;
+        --color: white;
+    }
+}
+
+header {
+    border-bottom: 1px solid var(--color);
+    color: var(--color);
+    padding: 0px 8px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}
+
+main {
+    width: 500px;
+    margin: 3rem auto 0;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--color);
+    padding: 0.5em;
+    color: var(--color);
+    font-size: medium;
+}
+button {
+    margin-top: 10px;
+    display: block;
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: var(--color);
+    color: var(--bg-color);
+    font-size: medium;
+    border: none;
+    cursor: pointer;
+}
+button:active {
+    scale: 0.95;
+}
+
+.profile {
+    padding: 10px 30px;
+    font-size: 2rem;
+}
