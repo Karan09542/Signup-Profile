@@ -3,15 +3,21 @@ import { createSlice } from "@reduxjs/toolkit"
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-        isLoggedIn: !!localStorage.getItem("token"),
+        user: {
+            ...(JSON.parse(localStorage.getItem("user")) || {}),
+            isLoggedIn: !!localStorage.getItem("token"),
+        },
     },
     reducers: {
         logout: (state)=> {
-            state.isLoggedIn = false;
+            state.user = null;
             localStorage.removeItem("token");
         },
         login: (state) => {
-            state.isLoggedIn = !!localStorage.getItem("token");
+            state.user = {
+                ...(JSON.parse(localStorage.getItem("user")) || {}),
+                isLoggedIn: !!localStorage.getItem("token"),
+            };
         }
     }
 })

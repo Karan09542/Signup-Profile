@@ -3,13 +3,14 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 const Authenticate = ({ children }) => {
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const user = useMemo(() => JSON.parse(localStorage.getItem("user")), []);
+  const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
+
+  
   useEffect(() => {
-    if (!isLoggedIn || !user) navigate("/signup");
+    if (!user || !user?.isLoggedIn) navigate("/signup");
     else navigate("/profile");
-  }, [isLoggedIn, navigate]);
+  }, [user, navigate]);
   return children;
 };
 

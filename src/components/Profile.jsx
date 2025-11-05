@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import Header from './Header'
 import { logout } from "../auth"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Profile = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
-  if(!user) return <></>
+  if(!user || !user?.isLoggedIn) return <></>;
+  
   return (
     <>
       <Header/>
